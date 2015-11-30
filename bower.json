@@ -1,0 +1,23 @@
+{
+  "name": "mnk-multiplayer",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Peter Petrov <petrov.p.peter@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/pppetrov/mnk-multiplayer",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "pure": "purecss#~0.6.0"
+  }
+}
