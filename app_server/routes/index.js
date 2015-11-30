@@ -11,4 +11,6 @@ router.get('/games/', ctrlGames.index);
 
 router.get('/games/:game_id/modes/', ctrlModes.index);
 
+// router.get('/games/:game_id/modes/:mode_id', ctrlModes.loadGame);
+
 module.exports = router;

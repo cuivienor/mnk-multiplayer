@@ -2,7 +2,9 @@ extends layout
 
 block content
   div.pure-g
-    - items.forEach(function(e) {
       div.pure-u-1-1
-        a.pure-button(href='#') #{e}
-    - })
+        a.pure-button(href='/games/1/modes') Tic-Tac-Toe
+      div.pure-u-1-1
+        a.pure-button(href='/games/2/modes') Gomoku
+      div.pure-u-1-1
+        a.pure-button(href='/games/3/modes') Connect6

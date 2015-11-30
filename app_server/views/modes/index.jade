@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  div.pure-g
+      div.pure-u-1-1
+        a.pure-button(href='/games/#{game_id}/modes/1') Play on same computer
+      div.pure-u-1-1
+        a.pure-button(href='/games/#{game_id}/modes/2') Play with a Friend
+      div.pure-u-1-1
+        a.pure-button(href='/games/#{game_id}/modes/3') Play against a random opponent
+      div.pure-u-1-1
+        a.pure-button(href='/games/#{game_id}/modes/4') Play against a computer
