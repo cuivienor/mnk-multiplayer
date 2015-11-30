@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  div.pure-g
+    - items.forEach(function(e) {
+      div.pure-u-1-1
+        a.pure-button(href='#') #{e}
+    - })
