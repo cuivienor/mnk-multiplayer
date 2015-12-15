@@ -5,8 +5,10 @@ var App = {
     Routers: {},
     
     initialize: function() {
+
         var mainRouter = new App.Routers.main();
-        Backbone.history.start();
+        Backbone.history.start({pushState: true});
+
     }
 };
 

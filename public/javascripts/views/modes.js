@@ -3,12 +3,15 @@ App.Views.modes = Backbone.View.extend({
     id: 'modes-view',
 
     initialize: function() {
-        $('#main-container').append(this.el);
-        this.render();
+        // $('#main-container').append(this.el);
+        // this.render();
     },
 
     render: function() {
-        this.$el.html('modes rendered yo');
+        var button = $('<a>').attr('href', 'games/1/modes/1')
+            .attr('class', 'pure-button')
+            .text('Play On This Computer');
+        this.$el.append(button);
         return this;
     },
     

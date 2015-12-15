@@ -3,16 +3,20 @@ App.Views.games = Backbone.View.extend({
     id: 'games-view',
 
     initialize: function() {
-        $('#main-container').append(this.el);
-        this.render();
+        // $('#main-container').append(this.el);
+        // this.render();
     },
 
     render: function() {
-        this.$el.html('games rendered yo');
+        var button = $('<a>').attr('href', 'games/1/modes')
+            .attr('class', 'pure-button')
+            .text('Tic-Tac-Toe');
+        this.$el.append(button);
         return this;
     },
     
     leave: function() {
+        this.off();
         this.remove();
     }    
 });
