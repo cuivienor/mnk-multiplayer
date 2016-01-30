@@ -1,16 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var ctrlMain = require('../controllers/main');
-var ctrlGames = require('../controllers/games');
-var ctrlModes = require('../controllers/modes');
+var ctrl = require('../controllers/main');
 
 /* GET home page. */
-router.get('/', ctrlMain.index);
-
-router.get('/games/', ctrlGames.index);
-
-router.get('/games/:game_id/modes/', ctrlModes.index);
-
-// router.get('/games/:game_id/modes/:mode_id', ctrlModes.loadGame);
+router.get('/', ctrl.index);
+router.get('/getLink/:id', ctrl.getLink);
 
 module.exports = router;
