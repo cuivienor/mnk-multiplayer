@@ -57,15 +57,25 @@ App.Views.Cell = Backbone.View.extend({
 });
 
 App.Views.Game = Backbone.View.extend({
+
+    tagName: 'table',
     
     className: 'game-container',
 
+    events: {
+        'click': 'move'
+    },
+
     initialize: function(options) {
         for (var i = 0; i < 3; i++) {
+            var row = $('<tr>');
             for(var j = 0; j < 3; j++) {
-                var cell = new App.Views.Cell({parrent: this.$el, row: i, column: j});
-                cell.render();
+                var cell = $('<td>');
+                cell.addClass('cell');
+                cell.attr('id', i + '-' + j);
+                row.append(cell);
             }
+            this.$el.append(row);
         }
     },
 
@@ -76,7 +86,15 @@ App.Views.Game = Backbone.View.extend({
     leave: function() {
         this.off();
         this.remove();
+    },
+
+    move: function(evt) {
+        console.log(evt.target);
+        var coords = evt.target.id.split('-');
+        var loc = {i: coords[0], j: coords[1]};
+        socket.emit('move', JSON.stringify(loc));
     }
+
     
 });
 
@@ -96,6 +114,7 @@ App.Views.NamePrompt = Backbone.View.extend({
         console.log(evt.which);
         if (evt.which === 13) {
             App.router.navigate('play', true);
+            socket.emit('newUser', this.$el.val());
         }
     },
 
@@ -134,4 +153,15 @@ App.Routers.TestRouter = Support.SwappingRouter.extend({
         console.log(view);
     }    
 });
+socket.on('move', function(msg) {
+    var opt = JSON.parse(msg);
+    console.log(opt);
+    var cell = $('#' + opt.i + '-' + opt.j);
+    if (opt.player === 1) {
+        cell.addClass('green');
+    } else {
+        cell.addClass('red');
+    }
+});
+         
 
