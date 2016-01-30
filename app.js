@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./app_server/routes/index');
 var users = require('./app_server/routes/users');
+var test = require('./app_server/routes/test');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use('/bower_components',  express.static(path.join(__dirname, '/bower_compon
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -59,3 +61,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
