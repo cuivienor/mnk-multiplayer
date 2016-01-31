@@ -5,7 +5,8 @@ $(function() {
             url: '/getLink/' + evt.target.id,
             dataType: 'json',
             
-            success: function() {
+            success: function(data) {
+                $('#link').text(document.URL + 'play/' + data.id);
             },
 
             error: function() {
