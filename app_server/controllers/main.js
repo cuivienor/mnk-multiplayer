@@ -19,5 +19,8 @@ module.exports.getLink = function(req, res) {
 };
 
 module.exports.play = function(req, res) {
-    console.log(req.params);
-}
+    games.forEach(function(e) {
+        if (e.id === req.params.id) {
+        }
+    });
+};
