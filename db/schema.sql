@@ -1,5 +1,6 @@
+DROP TABLE IF EXISTS challanges;
 DROP TABLE IF EXISTS games;
-DROP TABLE IF EXISTS types;
+
 
 CREATE TABLE games(
        id serial UNIQUE PRIMARY KEY,
@@ -10,5 +11,12 @@ CREATE TABLE games(
        p integer DEFAULT 1,
        q integer DEFAULT 1
 );
+
+CREATE TABLE challanges(
+       id serial UNIQUE PRIMARY KEY,
+       url varchar(15),
+       game_id integer REFERENCES games(id)
+);
+
 
 
