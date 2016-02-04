@@ -1,20 +1,9 @@
 doctype html
 html
   head
-    title= title
-
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/bower_components/pure/build/pure.css')
-    link(rel='stylesheet', href='/bower_components/pure/build/grids-responsive.css')
-    script(src='/bower_components/jquery/dist/jquery.js')
-    script(src='/bower_components/underscore/underscore.js')
-    script(src='/bower_components/backbone/backbone.js')
-    script(src='/javascripts/app.js')
-    script(src='/javascripts/support/swapping_router.js')
-    script(src='/javascripts/views/games.js')
-    script(src='/javascripts/views/modes.js')
-    script(src='/javascripts/views/game.js')
-    script(src='/javascripts/routers/router.js')
-    script(src='/javascripts/init.js')
+    title=title
+    include ./includes/styles.jade
+    include ./includes/scripts.jade
+    include ./includes/templates.jade
   body
     block content

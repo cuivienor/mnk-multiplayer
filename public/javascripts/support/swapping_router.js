@@ -10,6 +10,7 @@ _.extend(Support.SwappingRouter.prototype, Backbone.Router.prototype, {
 
         this.currentView = newView;
 
+
         $(this.el).empty().append(this.currentView.render().el);
     }
 });

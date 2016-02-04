@@ -1,52 +1,39 @@
-App.Views.Game = Backbone.View.extend({
+App.Views.Game = Support.CompositeView.extend({
     tagName: 'div',
     id: 'game',
 
-    initialize: function(m, n) {
-        this.m = m;
-        this.n = n;
-        this.render();
+
+    initialize: function() {
+        this.template = _.template($('#game-template').text());
+        _.bindAll(this, 'render');
     },
 
     render: function() {
-        var lastClicked;
-        var grid = this.createGrid(this.m, this.n, function(el,row,col,i){
-            console.log("You clicked on element:",el);
-            console.log("You clicked on row:",row);
-            console.log("You clicked on col:",col);
-            console.log("You clicked on item #:",i);
-
-            el.className='clicked';
-            if (lastClicked) lastClicked.className='';
-            lastClicked = el;
-        });
-        this.$el.append(grid);
+        this.renderLayout();
+        this.renderTitle();
+        // this.renderPlayers();
+        this.renderBoard();
         return this;
     },
 
-    createGrid: function ( rows, cols, callback ){
-        var i=0;
-        var $grid = $('<table>');
-        $grid.attr('class', 'grid');
-        for (var r = 0; r < rows; ++r){
-            var tr = $('<tr>');
-            $grid.append(tr);
-            for (var c = 0; c < cols; ++c){
-                var cell = $('<td>');
-                tr.append(cell);
-                cell.html = ++i;
-                cell.on('click',(function(el,r,c,i){
-                    return function(){
-                        callback(el,r,c,i);
-                    };
-                })(cell,r,c,i));
-            }
-        }
-        return $grid;
+    renderLayout: function() {
+        this.$el.html(this.template());
     },
 
-    leave: function() {
-        this.off();
-        this.remove();
+    renderTitle: function() {
+        var title = new App.Views.Title();
+        var titleContainer = this.$('#title');
+        this.renderChildInto(title, titleContainer);
+    },
+
+    renderPlayers: function() {
+        
+    },
+
+    renderBoard: function() {
+        var board = new App.Views.Board();
+        var boardContainer = this.$('#board');
+        this.renderChildInto(board, boardContainer);
     }
+    
 });

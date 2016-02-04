@@ -1,31 +1,18 @@
-App.Routers.main = Support.SwappingRouter.extend({
+App.Routers.Main = Support.SwappingRouter.extend({
+
     initialize: function(options) {
-        var that = this;
-        
         this.el = $('#main-container');
-
-        $(document).on('click', 'a:not([data-bypass])', function (evt) {
-
-            var href = $(this).attr('href');
-            var protocol = this.protocol + '//';
-
-            if (href.slice(protocol.length) !== protocol) {
-                evt.preventDefault();
-                that.navigate(href, true);
-            }
-        });
     },
 
     
     routes: {
-        "": "index",
-        "games": "games",
-        "games/:game_id/modes": "modes",
-        "games/:game_id/modes/:mode_id": "play"
+        "": "index"
     },
 
+
     index: function() {
-        this.navigate("games", {trigger: true});
+        var view = new App.Views.Game();
+        this.swap(view);
     },
     
     games: function() {

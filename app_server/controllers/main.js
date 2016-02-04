@@ -19,8 +19,16 @@ module.exports.getLink = function(req, res) {
 };
 
 module.exports.play = function(req, res) {
+    var game;
     games.forEach(function(e) {
         if (e.id === req.params.id) {
+            game = e.type;
         }
     });
+
+    var rows = game.split('-')[0];
+    var columns = game.split('-')[1];
+    res.render('play', {rows: rows, columns: columns});
 };
+
+

@@ -1,0 +1,11 @@
+script(id='board-template', type='text/template')
+  tbody
+    - var n = 0
+    while n < rows
+      tr
+        - var m = 0
+        while m < columns
+          td.cell
+          - m++
+      - n++
+  

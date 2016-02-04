@@ -6,10 +6,9 @@ var App = {
     
     initialize: function() {
 
-        var mainRouter = new App.Routers.main();
-        Backbone.history.start({pushState: true});
+        var mainRouter = new App.Routers.Main();
+        Backbone.history.start();
 
     }
 };
-
 var Support = {};
