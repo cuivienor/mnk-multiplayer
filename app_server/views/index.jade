@@ -2,10 +2,10 @@ extends layout
 
 block content
   div#main-container
-    div.game#3-3-3-1-1 Tic-Tac-Toe
-    div.game#15-15-4-1-1 Gomoko
-    div.game#15-15-6-1-1 Connect6
+    each game in games
+      div(id='#{game.id}', class='game') #{game.name}
   div#link
+  
   
 
 

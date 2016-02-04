@@ -17,6 +17,3 @@ CREATE TABLE challanges(
        url varchar(15),
        game_id integer REFERENCES games(id)
 );
-
-
-
