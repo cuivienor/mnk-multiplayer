@@ -8,9 +8,9 @@ module.exports.index = function(req, res) {
 };
 
 module.exports.getLink = function(req, res) {
-    var params = [parseInt(req.params.id)];
-    params.push(shortid.generate());
-    pg.writeChallange(params, res);
+    var gameID = parseInt(req.params.id);
+    var url = shortid.generate();
+    pg.writeChallange([gameID, url], res);
 };
 
 module.exports.play = function(req, res) {

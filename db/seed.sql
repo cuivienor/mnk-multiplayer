@@ -1,3 +1,3 @@
-INSERT INTO games (name, m, n, k) VALUES ('Tic-Tac-Toe', 3, 3, 3);
-INSERT INTO games (name, m, n, k) VALUES ('Gomoku', 15, 15, 5);
-INSERT INTO games (name, m, n, k, p, q) VALUES ('Connect6', 15, 15, 6, 1, 2);
+INSERT INTO games (name, type, params) VALUES ('Tic-Tac-Toe', 'mnk', '3-3-3-1-1');
+INSERT INTO games (name, type, params) VALUES ('Gomoku', 'mnk', '15-15-5-1-1');
+INSERT INTO games (name, type, params) VALUES ('Connect6', 'mnk', '15-15-6-1-2');
