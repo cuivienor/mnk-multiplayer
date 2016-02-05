@@ -16,5 +16,4 @@ module.exports.getLink = function(req, res) {
 module.exports.play = function(req, res) {
     console.log(req.params);
     pg.getGame(req.params.url, res);
-    // res.render('play', {rows: rows, columns: columns});
 };
