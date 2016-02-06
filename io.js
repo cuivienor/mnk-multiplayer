@@ -12,8 +12,9 @@ io.on('connection', function(socket) {
     });
 
     socket.on('register', function(url) {
+        socket.join(url);
         if (currentGames[url] === undefined) {
-            pg.initiateGame(url, currentGames, player);
+            pg.initiateGame(url, currentGames, player, io);
         } else {
             player.addToGame(currentGames[url]);
         }
