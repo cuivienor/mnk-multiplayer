@@ -1,34 +1,19 @@
 /* GET home page. */
 var fs = require('fs');
 var shortid = require('shortid');
-var games = JSON.parse((fs.readFileSync('data.json', 'utf8')));
+var pg = require('../../db/pg');
 
 module.exports.index = function(req, res) {
-    res.render('index');
+    pg.renderGames(res);
 };
 
 module.exports.getLink = function(req, res) {
-
-    var game = {
-        type: req.params.id,
-        id: shortid.generate()
-    };
-    games.push(game);
-    fs.writeFileSync('data.json', JSON.stringify(games));
-    res.send(game);
+    var gameID = parseInt(req.params.id);
+    var url = shortid.generate();
+    pg.writeChallange([gameID, url], res);
 };
 
 module.exports.play = function(req, res) {
-    var game;
-    games.forEach(function(e) {
-        if (e.id === req.params.id) {
-            game = e.type;
-        }
-    });
-
-    var rows = game.split('-')[0];
-    var columns = game.split('-')[1];
-    res.render('play', {rows: rows, columns: columns});
+    console.log(req.params);
+    pg.getGame(req.params.url, res);
 };
-
-

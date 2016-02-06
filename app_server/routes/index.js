@@ -5,6 +5,6 @@ var ctrl = require('../controllers/main');
 /* GET home page. */
 router.get('/', ctrl.index);
 router.get('/getLink/:id', ctrl.getLink);
-router.get('/play/:id', ctrl.play);
+router.get('/play/:url', ctrl.play);
 
 module.exports = router;
