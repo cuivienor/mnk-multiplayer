@@ -6,7 +6,7 @@ CREATE TABLE games(
        id serial UNIQUE PRIMARY KEY,
        name text NOT NULL,
        type text NOT NULL,
-       params text
+       spec text
 );
 
 CREATE TABLE challanges(
