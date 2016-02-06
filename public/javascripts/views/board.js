@@ -15,6 +15,7 @@ App.Views.Board = Support.CompositeView.extend({
     handleClick: function(evt) {
         var column = evt.target.cellIndex;
         var row = $(evt.target.parentNode).index();
+        App.socket.emit('move', column);
         console.log('column: ' + column);
         console.log('row: ' + row);
     }

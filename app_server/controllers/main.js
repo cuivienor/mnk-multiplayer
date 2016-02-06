@@ -2,6 +2,7 @@
 var fs = require('fs');
 var shortid = require('shortid');
 var pg = require('../../db/pg');
+var io = require('../../sockets');
 
 module.exports.index = function(req, res) {
     pg.renderGames(res);
@@ -16,4 +17,5 @@ module.exports.getLink = function(req, res) {
 module.exports.play = function(req, res) {
     console.log(req.params);
     pg.getGame(req.params.url, res);
+
 };

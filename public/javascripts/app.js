@@ -8,6 +8,9 @@ var App = {
 
         var mainRouter = new App.Routers.Main();
         Backbone.history.start();
+        var challangeId = $(location).attr('href').split('/').pop();
+        App.socket = io();
+        App.socket.emit('room', challangeId);
 
     }
 };

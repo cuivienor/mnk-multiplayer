@@ -1,5 +1,4 @@
-module.exports.io = function(io) {
-    io.on('connection', function(socket) {
-        console.log('user connected');
-    });
-};
+var app = require('./app.js');
+var io = require('socket.io')(app);
+
+module.exports = io;
