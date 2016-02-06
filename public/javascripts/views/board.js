@@ -13,10 +13,10 @@ App.Views.Board = Support.CompositeView.extend({
     },
 
     handleClick: function(evt) {
-        var column = evt.target.cellIndex;
+        var col = evt.target.cellIndex;
         var row = $(evt.target.parentNode).index();
-        App.socket.emit('move', column);
-        console.log('column: ' + column);
-        console.log('row: ' + row);
+        var moveSpec = {row: row, col: col};
+        App.socket.emit('move', moveSpec);
+        console.log(moveSpec);
     }
 });

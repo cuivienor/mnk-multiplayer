@@ -2,7 +2,6 @@
 var fs = require('fs');
 var shortid = require('shortid');
 var pg = require('../../db/pg');
-var io = require('../../sockets');
 
 module.exports.index = function(req, res) {
     pg.renderGames(res);

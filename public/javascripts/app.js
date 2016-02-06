@@ -10,7 +10,7 @@ var App = {
         Backbone.history.start();
         var challangeId = $(location).attr('href').split('/').pop();
         App.socket = io();
-        App.socket.emit('room', challangeId);
+        App.socket.emit('register', challangeId);
 
     }
 };
