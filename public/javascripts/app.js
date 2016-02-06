@@ -13,9 +13,6 @@ var App = {
         App.socket.emit('register', challangeId);
         // App.socket = App.socket.to(challangeId);
         //test
-        App.socket.on('move', function(msg) {
-            console.log(msg);
-        });
     }
 };
 var Support = {};
