@@ -52,7 +52,7 @@ module.exports.getGame = function (url, res) {
 
             var spec = JSON.parse(result.rows[0].spec);
             console.log(result.rows);
-            res.render('play', {rows: spec.m, columns: spec.n});
+            res.render('play', {rows: spec.m, columns: spec.n, spec: spec});
             done();
         });
         
@@ -60,7 +60,7 @@ module.exports.getGame = function (url, res) {
 
 };
 
-module.exports.initiateGame = function (url, game, player) {
+module.exports.initiateGame = function (url, game, player, io) {
     console.log(url);
     pg.connect(conString, function(err, client, done) {
 
@@ -73,6 +73,7 @@ module.exports.initiateGame = function (url, game, player) {
             console.log(result.rows);
             game[url] = new MnkGame(spec);
             player.addToGame(game[url]);
+            game[url].setRadio(io, url);
             console.log(game);
             done();
         });        

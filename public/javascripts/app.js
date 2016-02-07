@@ -3,15 +3,15 @@ var App = {
     Collections: {},
     Views: {},
     Routers: {},
+    socket: io(),
     
     initialize: function() {
 
         var mainRouter = new App.Routers.Main();
         Backbone.history.start();
-        var challangeId = $(location).attr('href').split('/').pop();
-        App.socket = io();
-        App.socket.emit('register', challangeId);
+        var url = $(location).attr('href').split('/').pop();
 
+        App.socket.emit('register', url);
     }
 };
 var Support = {};

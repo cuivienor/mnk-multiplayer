@@ -18,5 +18,13 @@ App.Views.Board = Support.CompositeView.extend({
         var moveSpec = {row: row, col: col};
         App.socket.emit('move', moveSpec);
         console.log(moveSpec);
+    },
+
+    update: function(spec) {
+        if (spec.player === 1){
+            $('tbody tr').eq(spec.row).find('td').eq(spec.col).addClass('green');
+        } else {
+            $('tbody tr').eq(spec.row).find('td').eq(spec.col).addClass('red');
+        }
     }
 });
