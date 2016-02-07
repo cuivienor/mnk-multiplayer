@@ -21,3 +21,11 @@ table {
 td {
     border: solid 1px;
 }
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}

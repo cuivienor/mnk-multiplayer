@@ -34,6 +34,10 @@ App.Views.Game = Support.CompositeView.extend({
         var board = new App.Views.Board();
         var boardContainer = this.$('#board');
         this.renderChildInto(board, boardContainer);
+        App.socket.on('move', board.update);
+    },
+
+    update: function(spec) {
     }
     
 });

@@ -52,7 +52,7 @@ module.exports.getGame = function (url, res) {
 
             var spec = JSON.parse(result.rows[0].spec);
             console.log(result.rows);
-            res.render('play', {rows: spec.m, columns: spec.n});
+            res.render('play', {rows: spec.m, columns: spec.n, spec: spec});
             done();
         });
         

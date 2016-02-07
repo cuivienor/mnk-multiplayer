@@ -13,6 +13,8 @@ App.Routers.Main = Support.SwappingRouter.extend({
     index: function() {
         var view = new App.Views.Game();
         this.swap(view);
+        App.socket.on('move', view.update);
+
     },
     
     games: function() {
