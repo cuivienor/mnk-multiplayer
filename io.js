@@ -8,6 +8,7 @@ io.on('connection', function(socket) {
 
     var player = new Player({name: 'Peter'});
     socket.on('disconnect', function() {
+        player.quit();
         console.log('user disconnected');
     });
 

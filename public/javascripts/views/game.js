@@ -11,7 +11,7 @@ App.Views.Game = Support.CompositeView.extend({
     render: function() {
         this.renderLayout();
         this.renderTitle();
-        // this.renderPlayers();
+        this.renderNotification();
         this.renderBoard();
         return this;
     },
@@ -26,8 +26,11 @@ App.Views.Game = Support.CompositeView.extend({
         this.renderChildInto(title, titleContainer);
     },
 
-    renderPlayers: function() {
-        
+    renderNotification: function() {
+        var notification = new App.Views.Notification();
+        var notContainer = this.$('#notification');
+        this.renderChildInto(notification, notContainer);
+        App.socket.on('notification', notification.update);
     },
 
     renderBoard: function() {
