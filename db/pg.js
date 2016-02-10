@@ -81,4 +81,20 @@ module.exports.initiateGame = function (url, game, player, io) {
 
 };
 
+module.exports.populateGames = function(games) {
+    
+    pg.connect(conString, function(err, client, done) {
+
+        if(handleError(err, client, done)) return;
+
+        client.query('SELECT games.spec, challanges.url FROM challanges LEFT JOIN games ON challanges.game_id = games.id', function(err, result) {
+            result.rows.forEach(function(game) {
+                games[game.url] = new MnkGame(game.spec);
+            });
+            console.log(games);
+        });
+    });
+    
+};
+
 
