@@ -10,7 +10,10 @@ io.on('connection', function(socket) {
     console.log('user connected');
 
     var player = new Player({name: 'Peter'});
+
     socket.on('disconnect', function() {
+        player.leaveGame();
+        delete player; // memory leak?!
         console.log('user disconnected');
     });
 
