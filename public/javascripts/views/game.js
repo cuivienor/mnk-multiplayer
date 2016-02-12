@@ -6,6 +6,7 @@ App.Views.Game = Support.CompositeView.extend({
     initialize: function() {
         this.template = _.template($('#game-template').text());
         _.bindAll(this, 'render');
+        console.log(this.model);
     },
 
     render: function() {
@@ -31,7 +32,7 @@ App.Views.Game = Support.CompositeView.extend({
     },
 
     renderBoard: function() {
-        var board = new App.Views.Board();
+        var board = new App.Views.Board({model: this.model});
         var boardContainer = this.$('#board');
         this.renderChildInto(board, boardContainer);
         App.socket.on('move', board.update);
