@@ -10,7 +10,6 @@ var users = require('./app_server/routes/users');
 var http = require('http');
 var debug = require('debug')('mnk-multiplayer:server');
 
-
 var app = express();
 
 // view engine setup

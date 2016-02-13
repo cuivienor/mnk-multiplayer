@@ -9,7 +9,7 @@ CREATE TABLE games(
        spec text
 );
 
-CREATE TABLE challanges(
+CREATE TABLE challenges(
        id serial UNIQUE PRIMARY KEY,
        url varchar(15),
        game_id integer REFERENCES games(id)

@@ -1,4 +1,10 @@
 App.Views.Board = Support.CompositeView.extend({
+
+    initialize: function() {
+        _.bindAll(this, 'update', 'render');
+        this.model.on('change', this.update);
+    },
+    
     tagName: 'table',
 
     events: {
@@ -17,14 +23,19 @@ App.Views.Board = Support.CompositeView.extend({
         var row = $(evt.target.parentNode).index();
         var moveSpec = {row: row, col: col};
         App.socket.emit('move', moveSpec);
-        console.log(moveSpec);
     },
 
     update: function(spec) {
-        if (spec.player === 1){
-            $('tbody tr').eq(spec.row).find('td').eq(spec.col).addClass('green');
-        } else {
-            $('tbody tr').eq(spec.row).find('td').eq(spec.col).addClass('red');
-        }
+        this.model.get('board').forEach(function(row, rowIndex) {
+            row.forEach(function(cell, colIndex) {
+                if (cell === 1){
+                    $('tbody tr').eq(rowIndex).find('td').eq(colIndex).attr('class', 'green');
+                } else if (cell === 2) {
+                    $('tbody tr').eq(rowIndex).find('td').eq(colIndex).attr('class', 'red');
+                } else {
+                    $('tbody tr').eq(rowIndex).find('td').eq(colIndex).attr('class', '');
+                }
+            });
+        });
     }
 });

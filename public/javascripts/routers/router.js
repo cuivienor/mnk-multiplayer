@@ -2,6 +2,9 @@ App.Routers.Main = Support.SwappingRouter.extend({
 
     initialize: function(options) {
         this.el = $('#main-container');
+
+ 
+        
     },
 
     
@@ -11,10 +14,10 @@ App.Routers.Main = Support.SwappingRouter.extend({
 
 
     index: function() {
-        var view = new App.Views.Game();
+        var board = new App.Models.Board();
+        var view = new App.Views.Game({model: board});        
         this.swap(view);
-        App.socket.on('move', view.update);
-
+        
     },
     
     games: function() {

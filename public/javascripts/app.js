@@ -11,7 +11,7 @@ var App = {
         Backbone.history.start();
         var url = $(location).attr('href').split('/').pop();
 
-        App.socket.emit('register', url);
+        // App.socket.emit('register', url);
     }
 };
 var Support = {};
